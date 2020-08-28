@@ -36,14 +36,14 @@
             web3 = new Web3(web3.currentProvider);
         } else {
             // set the provider you want from Web3.providers
-            web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:7545"));
+            web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/v3/072097a24b7c4994912ccd66991d5300"));
         }
 
         web3.eth.defaultAccount = web3.eth.accounts[0];
 
         var infoContract = web3.eth.contract([{"constant":true,"inputs":[],"name":"getInfo","outputs":[{"name":"","type":"string"},{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_fName","type":"string"},{"name":"_age","type":"uint256"}],"name":"setInfo","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"}]);
 
-        var info = infoContract.at('0x8cdaf0cd259887258bc13a92c0a6da92698644c0');
+        var info = infoContract.at('0x4c951b26ab50344ba54b3cb240f4b54b9fe50245');
 
         info.getInfo(function(error, result){
             if(!error)
